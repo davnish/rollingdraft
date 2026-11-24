@@ -70,3 +70,9 @@
   text-decoration: none;
 }
 .rd-wordmark .rd-dot { color: var(--rd-brand); }
+
+/* The "rd." mark (the favicon) drawn inline; follows the theme. */
+.rd-mark { display: block; flex-shrink: 0; }
+.rd-mark-bg { fill: var(--rd-text); }
+.rd-mark-fg { fill: var(--rd-bg); }
+.rd-mark-dot { fill: var(--rd-brand); }

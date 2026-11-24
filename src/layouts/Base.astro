@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import RdMark from '../components/RdMark.astro';
 
 interface Props {
   title?: string;
@@ -7,7 +8,7 @@ interface Props {
 }
 
 const site = 'rollingdraft';
-const { title, description = 'Hi, welcome. This is a running log of experiments and side projects in ML, infrastructure and AI. I build to learn and write down what I find.' } = Astro.props;
+const { title, description = 'Hi, welcome. These are my sidequests in ML, infrastructure and AI. I build, learn and try to write down what I find.' } = Astro.props;
 const fullTitle = title ? `${title} · ${site}` : site;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -57,7 +58,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap-wide">
-        <a class="rd-wordmark" href="/">rollingdraft<span class="rd-dot">.</span></a>
+        <a class="rd-wordmark" href="/" aria-label="rollingdraft home"><RdMark size={26} /><span>rollingdraft</span></a>
         <nav class="site-nav" aria-label="Main">
           {nav.map((item) => (
             <a class="word-link" href={`${item.href}/`} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>

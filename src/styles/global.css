@@ -84,7 +84,8 @@ h3 { font-size: 1rem; line-height: 1.4; letter-spacing: -0.01em; }
   border-bottom: 1px solid var(--rd-border);
 }
 .site-header .wrap-wide { display: flex; align-items: center; gap: 1.5rem; height: 4rem; }
-.site-header .rd-wordmark { font-size: 1rem; display: inline-flex; align-items: center; min-height: 2.75rem; }
+.site-header .rd-wordmark { font-size: 1rem; display: inline-flex; align-items: center; gap: 0.55rem; min-height: 2.75rem; }
+.prose .hero-actions .btn svg { width: 1rem; height: 1rem; }
 .site-nav { display: flex; align-items: center; gap: 1.5rem; margin-left: auto; }
 .site-nav a { font-size: 0.875rem; display: inline-flex; align-items: center; min-height: 2.75rem; }
 .site-nav a[aria-current='page'] { color: var(--rd-text); }
