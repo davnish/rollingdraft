@@ -2,7 +2,7 @@
 
 The hub site for [rollingdraft.com](https://rollingdraft.com): an About page,
 **Sidequests** (one card per side project) and a Markdown **blog**. Built with
-[Astro](https://astro.build) as a fully static site and hosted on Cloudflare Pages.
+[Astro](https://astro.build) as a fully static site and hosted as a static Cloudflare Worker.
 
 Each project lives in its own repo and on its own subdomain, for example
 [cocolit.rollingdraft.com](https://cocolit.rollingdraft.com). This site only links to them.
@@ -45,14 +45,11 @@ instead of copying it:
 
 ## Deployment
 
-Cloudflare Pages builds every push to `main`, and every other branch gets a preview URL.
+The site is a static-assets-only Cloudflare Worker, configured in
+`wrangler.jsonc`. Workers Builds is connected to this repo: every push to `main`
+runs `npm run build` and then `npx wrangler deploy`, which uploads `dist/`.
+The `name` in `wrangler.jsonc` must match the Worker in the dashboard (`rollingdraft`).
 
-| Setting                | Value           |
-| ---------------------- | --------------- |
-| Framework preset       | Astro           |
-| Build command          | `npm run build` |
-| Build output directory | `dist`          |
-| Node version           | from `.node-version` |
-
-The custom domains `rollingdraft.com` and `www.rollingdraft.com` are attached
-to the Pages project.
+- Live (until the custom domain is attached): https://rollingdraft.nischal-singh38.workers.dev
+- Unknown paths serve `dist/404.html` with a 404 status.
+- `npx wrangler dev` serves the built `dist/` locally the same way production does.
