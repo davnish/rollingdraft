@@ -1,0 +1,32 @@
+/* rollingdraft brand: colours, type and a few base styles.
+ * Served at https://rollingdraft.com/brand.css so every project can link it
+ * instead of copying it: a rebrand is one edit here. Keep it small and free of
+ * page layout; projects only rely on the custom properties and .rd-* classes. */
+
+:root {
+  color-scheme: dark;
+  --rd-bg: #0c1411;
+  --rd-surface: #14201b;
+  --rd-surface-soft: rgba(22, 35, 29, 0.78);
+  --rd-text: #f4f1e8;
+  --rd-muted: #a3b2a9;
+  --rd-border: rgba(244, 241, 232, 0.09);
+  --rd-accent: #f2b544;
+  --rd-accent-hover: #e3a22d;
+  --rd-accent-ink: #1d1505;
+  --rd-accent-soft: rgba(242, 181, 68, 0.14);
+  --rd-green: #6fd49a;
+  --rd-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --rd-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --rd-radius: 14px;
+}
+
+/* The wordmark used in every site header: "rollingdraft / project". */
+.rd-wordmark {
+  font-family: var(--rd-font);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--rd-text);
+  text-decoration: none;
+}
+.rd-wordmark .rd-dot { color: var(--rd-accent); }

@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const site = 'rollingdraft';
+const { title, description = 'Side projects, experiments and write-ups by Nischal Singh.' } = Astro.props;
+const fullTitle = title ? `${title} · ${site}` : site;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const nav = [
+  { href: '/sidequests', label: 'Sidequests' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+];
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="rollingdraft blog" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/brand.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap-wide">
+        <a class="rd-wordmark" href="/">rollingdraft<span class="rd-dot">.</span></a>
+        <nav class="site-nav" aria-label="Main">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap-wide">
+        <span>© {new Date().getFullYear()} Nischal Singh</span>
+        <nav aria-label="Elsewhere">
+          <a href="https://github.com/davnish">GitHub</a>
+          <a href="https://www.linkedin.com/in/nischal-singh/">LinkedIn</a>
+          <a href="/rss.xml">RSS</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts, getProjects } from '../content';
+
+const projects = (await getProjects()).slice(0, 4);
+const posts = (await getPosts()).slice(0, 5);
+---
+
+<Base>
+  <section class="hero wrap-wide">
+    <h1>Things I build to find out how they work.</h1>
+    <p class="lede">
+      rollingdraft is where my side projects live: small, working experiments that I keep
+      improving, and notes on what I learned building them.
+    </p>
+  </section>
+
+  <section class="wrap-wide">
+    <div class="section-head">
+      <h2>Sidequests</h2>
+      <a href="/sidequests">All projects →</a>
+    </div>
+    <ul class="cards">{projects.map((p) => <ProjectCard project={p} />)}</ul>
+  </section>
+
+  <section class="wrap-wide">
+    <div class="section-head">
+      <h2>Latest writing</h2>
+      <a href="/blog">All posts →</a>
+    </div>
+    <PostList posts={posts} />
+  </section>
+</Base>

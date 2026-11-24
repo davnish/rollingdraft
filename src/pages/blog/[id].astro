@@ -1,0 +1,30 @@
+---
+import { render, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getPosts, formatDate } from '../../content';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, date, updated, tags, project: projectId } = post.data;
+const project = projectId ? await getEntry('projects', projectId) : undefined;
+---
+
+<Base title={title} description={description}>
+  <article class="prose wrap">
+    <header>
+      <h1>{title}</h1>
+      <p class="muted">
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        {updated && <> · updated <time datetime={updated.toISOString()}>{formatDate(updated)}</time></>}
+        {project && <> · from <a href={`/sidequests/${project.id}`}>{project.data.title}</a></>}
+      </p>
+      {tags.length > 0 && <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>}
+    </header>
+    <Content />
+  </article>
+</Base>

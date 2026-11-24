@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../content';
+
+const posts = await getPosts();
+---
+
+<Base title="Blog" description="Write-ups and results from rollingdraft side projects.">
+  <section class="hero wrap">
+    <h1>Blog</h1>
+    <p class="lede">Write-ups, results and the occasional dead end. Also available as <a href="/rss.xml">RSS</a>.</p>
+  </section>
+  <section class="wrap">
+    <PostList posts={posts} />
+  </section>
+</Base>

@@ -1,0 +1,39 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts, getProjects, formatDate } from '../../content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, summary, url, repo, status, started, tags } = project.data;
+const related = (await getPosts()).filter((p) => p.data.project === project.id);
+---
+
+<Base title={title} description={summary}>
+  <article class="prose wrap">
+    <header>
+      <span class={`status status-${status}`}>{status}</span>
+      <h1>{title}</h1>
+      <p class="lede">{summary}</p>
+      <p class="muted">
+        Started {formatDate(started)}
+        {url && <> · <a href={url}>Open the project ↗</a></>}
+        {repo && <> · <a href={repo}>Source</a></>}
+      </p>
+      {tags.length > 0 && <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>}
+    </header>
+    <Content />
+    {related.length > 0 && (
+      <>
+        <h2>Posts about {title}</h2>
+        <PostList posts={related} />
+      </>
+    )}
+  </article>
+</Base>
