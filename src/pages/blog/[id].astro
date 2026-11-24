@@ -18,10 +18,10 @@ const project = projectId ? await getEntry('projects', projectId) : undefined;
   <article class="prose wrap">
     <header>
       <h1>{title}</h1>
-      <p class="muted">
+      <p class="meta">
         <time datetime={date.toISOString()}>{formatDate(date)}</time>
         {updated && <> · updated <time datetime={updated.toISOString()}>{formatDate(updated)}</time></>}
-        {project && <> · from <a href={`/sidequests/${project.id}`}>{project.data.title}</a></>}
+        {project && <> · from <a href={`/sidequests/${project.id}/`}>{project.data.title}</a></>}
       </p>
       {tags.length > 0 && <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>}
     </header>

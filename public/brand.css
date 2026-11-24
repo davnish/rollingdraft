@@ -1,31 +1,75 @@
-/* rollingdraft brand: colours, type and a few base styles.
+/* rollingdraft brand: colours, type and the header wordmark.
  * Served at https://rollingdraft.com/brand.css so every project can link it
  * instead of copying it: a rebrand is one edit here. Keep it small and free of
- * page layout; projects only rely on the custom properties and .rd-* classes. */
+ * page layout; projects only rely on the custom properties and .rd-* classes.
+ *
+ * Themes: light by default. Dark applies when <html data-theme="dark">, or when
+ * the OS prefers dark and the page hasn't chosen data-theme="light". */
 
 :root {
-  color-scheme: dark;
-  --rd-bg: #0c1411;
-  --rd-surface: #14201b;
-  --rd-surface-soft: rgba(22, 35, 29, 0.78);
-  --rd-text: #f4f1e8;
-  --rd-muted: #a3b2a9;
-  --rd-border: rgba(244, 241, 232, 0.09);
-  --rd-accent: #f2b544;
-  --rd-accent-hover: #e3a22d;
-  --rd-accent-ink: #1d1505;
-  --rd-accent-soft: rgba(242, 181, 68, 0.14);
-  --rd-green: #6fd49a;
+  color-scheme: light;
+  --rd-bg: #ffffff;
+  --rd-surface: #f7f7f8;
+  --rd-surface-raised: #ffffff;
+  --rd-text: #18181b;
+  --rd-muted: #5b5b66;
+  --rd-faint: #8a8a96;
+  --rd-border: #e6e6ea;
+  --rd-border-strong: #d1d1d8;
+  --rd-accent: #e8620c;
+  --rd-accent-hover: #c74f05;
+  --rd-accent-ink: #ffffff;
+  --rd-accent-soft: rgba(232, 98, 12, 0.08);
+  --rd-green: #15803d;
+  --rd-green-soft: rgba(21, 128, 61, 0.09);
   --rd-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --rd-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  --rd-radius: 14px;
+  --rd-radius: 8px;
 }
 
-/* The wordmark used in every site header: "rollingdraft / project". */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --rd-bg: #0e0e10;
+  --rd-surface: #17171a;
+  --rd-surface-raised: #1c1c20;
+  --rd-text: #f2f2f4;
+  --rd-muted: #a3a3ad;
+  --rd-faint: #74747e;
+  --rd-border: #27272c;
+  --rd-border-strong: #3a3a41;
+  --rd-accent: #fb8b3d;
+  --rd-accent-hover: #fda262;
+  --rd-accent-ink: #1a0d03;
+  --rd-accent-soft: rgba(251, 139, 61, 0.12);
+  --rd-green: #4ade80;
+  --rd-green-soft: rgba(74, 222, 128, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --rd-bg: #0e0e10;
+    --rd-surface: #17171a;
+    --rd-surface-raised: #1c1c20;
+    --rd-text: #f2f2f4;
+    --rd-muted: #a3a3ad;
+    --rd-faint: #74747e;
+    --rd-border: #27272c;
+    --rd-border-strong: #3a3a41;
+    --rd-accent: #fb8b3d;
+    --rd-accent-hover: #fda262;
+    --rd-accent-ink: #1a0d03;
+    --rd-accent-soft: rgba(251, 139, 61, 0.12);
+    --rd-green: #4ade80;
+    --rd-green-soft: rgba(74, 222, 128, 0.1);
+  }
+}
+
+/* The wordmark used in every site header: "rollingdraft." */
 .rd-wordmark {
   font-family: var(--rd-font);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   color: var(--rd-text);
   text-decoration: none;
 }

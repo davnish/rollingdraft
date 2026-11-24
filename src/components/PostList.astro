@@ -17,7 +17,7 @@ const { posts } = Astro.props;
       <li>
         <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
         <span>
-          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
           {post.data.draft && <span class="draft-badge">draft</span>}
         </span>
       </li>
