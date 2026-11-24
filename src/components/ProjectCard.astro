@@ -20,8 +20,7 @@ const href = `/sidequests/${project.id}/`;
     <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>
   )}
   <div class="links">
-    {url && <a href={url}>Open ↗</a>}
-    {repo && <a href={repo}>Source</a>}
-    <a href={href}>Write-up</a>
+    {url && <a class="word-link" href={url} aria-label={`${title} live site`}>Live site ↗</a>}
+    {repo && <a class="word-link" href={repo} aria-label={`${title} source code`}>Source</a>}
   </div>
 </li>

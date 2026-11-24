@@ -9,7 +9,7 @@ const projects = await getProjects();
 <Base title="Sidequests" description="Side projects and experiments, each running on its own rollingdraft.com subdomain.">
   <section class="page-head wrap-wide">
     <h1>Sidequests</h1>
-    <p class="lede">Projects I've built or am building. Live ones run on their own <code>*.rollingdraft.com</code> subdomain.</p>
+    <p class="lede">Projects I've built or am building. Live ones run on their own rollingdraft.com subdomain.</p>
   </section>
   <section class="wrap-wide">
     <ul class="cards">{projects.map((p) => <ProjectCard project={p} />)}</ul>

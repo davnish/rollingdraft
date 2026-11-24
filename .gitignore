@@ -5,3 +5,8 @@ dist/
 .env.*
 .DS_Store
 .wrangler/
+
+# Third-party agent skills (installed with `npx skills add`)
+.claude/skills/
+skills-lock.json
+.taste-skill/

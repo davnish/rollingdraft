@@ -2,22 +2,35 @@
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import PostList from '../components/PostList.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
 import { getPosts, getProjects } from '../content';
 
-const projects = (await getProjects()).slice(0, 4);
+const allProjects = await getProjects();
+const projects = allProjects.slice(0, 4);
 const posts = (await getPosts()).slice(0, 5);
+// The notice above the headline names the newest live project.
+const latestLive = allProjects
+  .filter((p) => p.data.status === 'live' && p.data.url)
+  .sort((a, b) => b.data.started.valueOf() - a.data.started.valueOf())[0];
+const liveHost = latestLive?.data.url ? new URL(latestLive.data.url).host : undefined;
 ---
 
 <Base>
   <section class="hero wrap-wide">
-    <span class="eyebrow">Side projects &amp; experiments</span>
-    <h1>Things I build to find out<br class="br-wide" /> how they work.</h1>
+    {latestLive && (
+      <a class="notice" href={latestLive.data.url}>
+        <span class="status status-live">live</span>
+        <span><strong>{latestLive.data.title}</strong> at {liveHost}</span>
+        <ArrowIcon />
+      </a>
+    )}
+    <h1>Side projects and write-ups<br class="br-wide" /> by Nischal Singh.</h1>
     <p class="lede">
-      rollingdraft is where my side projects live: small, working experiments that I keep
-      improving, and notes on what I learned building them.
+      Working experiments in geospatial machine learning and the infrastructure that runs them.
+      Each one lives on its own subdomain, with notes on how it was built.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="/sidequests/">Explore sidequests</a>
+      <a class="btn btn-primary" href="/sidequests/">See the projects</a>
       <a class="btn btn-secondary" href="/blog/">Read the blog</a>
     </div>
   </section>
@@ -25,15 +38,15 @@ const posts = (await getPosts()).slice(0, 5);
   <section class="section wrap-wide">
     <div class="section-head">
       <h2>Sidequests</h2>
-      <a href="/sidequests/">All projects →</a>
+      <a class="arrow-link" href="/sidequests/">All projects <ArrowIcon /></a>
     </div>
     <ul class="cards">{projects.map((p) => <ProjectCard project={p} />)}</ul>
   </section>
 
   <section class="section wrap-wide">
     <div class="section-head">
-      <h2>Latest writing</h2>
-      <a href="/blog/">All posts →</a>
+      <h2>Latest posts</h2>
+      <a class="arrow-link" href="/blog/">All posts <ArrowIcon /></a>
     </div>
     <PostList posts={posts} />
   </section>

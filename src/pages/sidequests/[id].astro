@@ -21,12 +21,14 @@ const related = (await getPosts()).filter((p) => p.data.project === project.id);
       <span class={`status status-${status}`}>{status}</span>
       <h1>{title}</h1>
       <p class="lede">{summary}</p>
-      <p class="meta">
-        Started {formatDate(started)}
-        {url && <> · <a href={url}>Open the project ↗</a></>}
-        {repo && <> · <a href={repo}>Source</a></>}
-      </p>
+      <p class="meta">Started {formatDate(started)}</p>
       {tags.length > 0 && <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>}
+      {(url || repo) && (
+        <div class="hero-actions">
+          {url && <a class="btn btn-primary" href={url}>Try {title} ↗</a>}
+          {repo && <a class="btn btn-secondary" href={repo}>Read the source</a>}
+        </div>
+      )}
     </header>
     <Content />
     {related.length > 0 && (

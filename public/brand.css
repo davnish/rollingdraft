@@ -1,76 +1,72 @@
-/* rollingdraft brand: colours, type and the header wordmark.
+/* rollingdraft brand: colours, type, elevation and the header wordmark.
  * Served at https://rollingdraft.com/brand.css so every project can link it
  * instead of copying it: a rebrand is one edit here. Keep it small and free of
  * page layout; projects only rely on the custom properties and .rd-* classes.
  *
- * Themes: light by default. Dark applies when <html data-theme="dark">, or when
- * the OS prefers dark and the page hasn't chosen data-theme="light". */
+ * Direction: ink on near-white, a grey scale for every border and secondary
+ * text, blue for links in running text, and the orange dot as the one brand
+ * colour. Geist for everything, Geist Mono for technical labels, 600 at most.
+ *
+ * Themes: light by default. Dark applies only when <html data-theme="dark">
+ * (the visitor picked it with a toggle); the OS setting is not followed. */
 
 :root {
   color-scheme: light;
-  --rd-bg: #ffffff;
-  --rd-surface: #f7f7f8;
-  --rd-surface-raised: #ffffff;
-  --rd-text: #18181b;
-  --rd-muted: #5b5b66;
-  --rd-faint: #8a8a96;
-  --rd-border: #e6e6ea;
-  --rd-border-strong: #d1d1d8;
-  --rd-accent: #e8620c;
-  --rd-accent-hover: #c74f05;
-  --rd-accent-ink: #ffffff;
-  --rd-accent-soft: rgba(232, 98, 12, 0.08);
-  --rd-green: #15803d;
-  --rd-green-soft: rgba(21, 128, 61, 0.09);
-  --rd-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --rd-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --rd-bg: #fafafa;
+  --rd-surface: #ffffff;
+  --rd-surface-2: #f2f2f2;
+  --rd-text: #171717;
+  --rd-muted: #4d4d4d;
+  --rd-faint: #6b6b6b;
+  --rd-border: #ebebeb;
+  --rd-border-strong: #d1d1d1;
+  --rd-primary: #171717;
+  --rd-on-primary: #ffffff;
+  --rd-link: #0062d1;
+  --rd-brand: #e8620c;
+  --rd-green: #0a7d3a;
+  --rd-green-soft: rgba(10, 125, 58, 0.1);
+  /* Elevation: small stacked offsets plus a 1px inset ring, never one heavy drop. */
+  --rd-ring: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --rd-shadow-1: 0 1px 1px rgba(0, 0, 0, 0.02), 0 2px 2px rgba(0, 0, 0, 0.04);
+  --rd-shadow-2: 0 2px 2px rgba(0, 0, 0, 0.04), 0 8px 16px -4px rgba(0, 0, 0, 0.06);
+  --rd-font: 'Geist', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --rd-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --rd-radius-sm: 6px;
   --rd-radius: 8px;
+  --rd-radius-lg: 12px;
+  /* Kept for projects that linked the first version of this file. */
+  --rd-accent: var(--rd-brand);
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --rd-bg: #0e0e10;
-  --rd-surface: #17171a;
-  --rd-surface-raised: #1c1c20;
-  --rd-text: #f2f2f4;
-  --rd-muted: #a3a3ad;
-  --rd-faint: #74747e;
-  --rd-border: #27272c;
-  --rd-border-strong: #3a3a41;
-  --rd-accent: #fb8b3d;
-  --rd-accent-hover: #fda262;
-  --rd-accent-ink: #1a0d03;
-  --rd-accent-soft: rgba(251, 139, 61, 0.12);
-  --rd-green: #4ade80;
-  --rd-green-soft: rgba(74, 222, 128, 0.1);
+  --rd-bg: #0a0a0a;
+  --rd-surface: #111111;
+  --rd-surface-2: #1a1a1a;
+  --rd-text: #ededed;
+  --rd-muted: #a1a1a1;
+  --rd-faint: #8f8f8f;
+  --rd-border: #242424;
+  --rd-border-strong: #3d3d3d;
+  --rd-primary: #ededed;
+  --rd-on-primary: #0a0a0a;
+  --rd-link: #52a8ff;
+  --rd-brand: #fb8b3d;
+  --rd-green: #3ccf7a;
+  --rd-green-soft: rgba(60, 207, 122, 0.12);
+  --rd-ring: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  --rd-shadow-1: 0 1px 1px rgba(0, 0, 0, 0.3);
+  --rd-shadow-2: 0 2px 2px rgba(0, 0, 0, 0.3), 0 8px 16px -4px rgba(0, 0, 0, 0.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    color-scheme: dark;
-    --rd-bg: #0e0e10;
-    --rd-surface: #17171a;
-    --rd-surface-raised: #1c1c20;
-    --rd-text: #f2f2f4;
-    --rd-muted: #a3a3ad;
-    --rd-faint: #74747e;
-    --rd-border: #27272c;
-    --rd-border-strong: #3a3a41;
-    --rd-accent: #fb8b3d;
-    --rd-accent-hover: #fda262;
-    --rd-accent-ink: #1a0d03;
-    --rd-accent-soft: rgba(251, 139, 61, 0.12);
-    --rd-green: #4ade80;
-    --rd-green-soft: rgba(74, 222, 128, 0.1);
-  }
-}
 
 /* The wordmark used in every site header: "rollingdraft." */
 .rd-wordmark {
   font-family: var(--rd-font);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.04em;
   color: var(--rd-text);
   text-decoration: none;
 }
-.rd-wordmark .rd-dot { color: var(--rd-accent); }
+.rd-wordmark .rd-dot { color: var(--rd-brand); }
