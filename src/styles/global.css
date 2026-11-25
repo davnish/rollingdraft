@@ -124,12 +124,12 @@ h3 { font-size: 1rem; line-height: 1.4; letter-spacing: -0.01em; }
   padding-block: 1.5rem; flex-wrap: wrap; color: var(--rd-faint);
 }
 .site-footer nav { display: flex; gap: 0.25rem; }
-.site-footer .icon-link {
+.icon-link {
   justify-content: center; min-width: 2.75rem; color: var(--rd-faint); border-radius: var(--rd-radius-sm);
   transition: color 150ms var(--ease, ease), transform 150ms var(--ease, ease);
 }
-.site-footer .icon-link:hover { color: var(--rd-text); transform: translateY(-1px); }
-.site-footer .icon-link:active { transform: translateY(0) scale(0.95); transition-duration: 90ms; }
+.icon-link:hover { color: var(--rd-text); transform: translateY(-1px); }
+.icon-link:active { transform: translateY(0) scale(0.95); transition-duration: 90ms; }
 .site-footer a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 
 /* ---------- Sections ---------- */
@@ -192,7 +192,8 @@ h3 { font-size: 1rem; line-height: 1.4; letter-spacing: -0.01em; }
 .card-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .card h3 a::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
 .card p { margin: 0; color: var(--rd-muted); font-size: 0.9375rem; line-height: 1.55; }
-.card .links { position: relative; z-index: 1; margin-top: auto; display: flex; gap: 1.25rem; font-size: 0.875rem; }
+.card .links { position: relative; z-index: 1; margin-top: auto; display: flex; align-items: center; gap: 1rem; font-size: 0.875rem; }
+.card .links .icon-link { margin-left: -0.6rem; }
 .card .links a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 
 .status {

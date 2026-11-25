@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import GitHub from './icons/GitHub.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -20,7 +21,7 @@ const href = `/sidequests/${project.id}/`;
     <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>
   )}
   <div class="links">
-    {url && <a class="word-link" href={url} aria-label={`${title} live site`}>Live site ↗</a>}
-    {repo && <a class="word-link" href={repo} aria-label={`${title} source code`}>Source</a>}
+    {url && <a class="word-link" href={url} aria-label={`Visit ${title}`}>Visit ↗</a>}
+    {repo && <a class="icon-link" href={repo} aria-label={`${title} on GitHub`} title="Source on GitHub"><GitHub /></a>}
   </div>
 </li>

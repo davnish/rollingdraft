@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import GitHub from '../../components/icons/GitHub.astro';
 import PostList from '../../components/PostList.astro';
 import { getPosts, getProjects, formatDate } from '../../content';
 
@@ -25,8 +26,8 @@ const related = (await getPosts()).filter((p) => p.data.project === project.id);
       {tags.length > 0 && <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>}
       {(url || repo) && (
         <div class="hero-actions">
-          {url && <a class="btn btn-primary" href={url}>Try {title} ↗</a>}
-          {repo && <a class="btn btn-secondary" href={repo}>Read the source</a>}
+          {url && <a class="btn btn-primary" href={url}>Visit {title} ↗</a>}
+          {repo && <a class="btn btn-secondary" href={repo}><GitHub /> GitHub</a>}
         </div>
       )}
     </header>
