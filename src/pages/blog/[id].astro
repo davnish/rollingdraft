@@ -21,7 +21,7 @@ const project = projectId ? await getEntry('projects', projectId) : undefined;
       <p class="meta">
         <time datetime={date.toISOString()}>{formatDate(date)}</time>
         {updated && <> · updated <time datetime={updated.toISOString()}>{formatDate(updated)}</time></>}
-        {project && <> · from <a href={`/sidequests/${project.id}/`}>{project.data.title}</a></>}
+        {project && <> · from <a href={`/projects/${project.id}/`}>{project.data.title}</a></>}
       </p>
       {tags.length > 0 && <ul class="tags">{tags.map((t) => <li>{t}</li>)}</ul>}
     </header>

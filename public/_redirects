@@ -1,0 +1,3 @@
+/sidequests /projects/ 301
+/sidequests/ /projects/ 301
+/sidequests/* /projects/:splat 301

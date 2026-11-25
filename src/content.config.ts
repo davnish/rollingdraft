@@ -18,7 +18,7 @@ const blog = defineCollection({
   }),
 });
 
-// Sidequests: one file per project, src/content/projects/<slug>.md.
+// Projects: one file per project, src/content/projects/<slug>.md.
 // The body is the longer write-up shown on the project's page.
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),

@@ -24,7 +24,7 @@ Pushing to `main` deploys. Cloudflare Workers Builds runs `npm run build` then `
 ## Architecture
 
 - **Content collections** (`src/content.config.ts`): `blog` (`src/content/blog/<slug>.md`) and `projects` (`src/content/projects/<slug>.md`). The file name is the slug and URL. `src/content.ts` holds the sorted getters: `getPosts()` drops `draft: true` posts except in dev; `getProjects()` sorts by `order`, then newest. A post's `project: <slug>` lists it on that project's page. `post-template.md` is a permanent draft used as the copy-from template.
-- **Naming:** the UI says "Projects", but the routes stay at `/sidequests/` (`src/pages/sidequests/`) so old links keep working. Don't rename the routes.
+- **Routes:** projects live at `/projects/` (`src/pages/projects/`). They used to be `/sidequests/`; `public/_redirects` 301s the old paths, so keep it.
 - **`src/layouts/Base.astro`** wraps every page: meta/og tags (the default `description` doubles as the home page's search description, so keep it in sync with the intro in `src/pages/index.astro`), the theme script, the header nav array, and the footer icon links.
 - **Theme:** light by default. Dark applies only when `<html data-theme="dark">`, set by the toggle and saved in `localStorage.theme`; the OS setting is deliberately not followed. A head script applies it before first paint.
 - **Styles:** `public/brand.css` holds the shared `--rd-*` tokens (light plus `[data-theme='dark']`) and the `.rd-wordmark`/`.rd-mark` classes. It's served at `https://rollingdraft.com/brand.css` for other projects, so keep it free of page layout. `src/styles/global.css` is this site's layout and components.

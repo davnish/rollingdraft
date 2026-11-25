@@ -8,7 +8,7 @@ interface Props {
 
 const { project } = Astro.props;
 const { title, summary, url, repo, status, tags } = project.data;
-const href = `/sidequests/${project.id}/`;
+const href = `/projects/${project.id}/`;
 ---
 
 <li class="card">

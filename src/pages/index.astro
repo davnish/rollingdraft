@@ -30,7 +30,7 @@ const liveHost = latestLive?.data.url ? new URL(latestLive.data.url).host : unde
     </p>
     <p class="hero-note">Some projects are live. Click "See the projects" to check them out.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="/sidequests/">See the projects</a>
+      <a class="btn btn-primary" href="/projects/">See the projects</a>
       <a class="btn btn-secondary" href="/blog/">Read the blog</a>
     </div>
   </section>
@@ -38,7 +38,7 @@ const liveHost = latestLive?.data.url ? new URL(latestLive.data.url).host : unde
   <section class="section wrap-wide">
     <div class="section-head">
       <h2>Projects</h2>
-      <a class="arrow-link" href="/sidequests/">All projects <ArrowIcon /></a>
+      <a class="arrow-link" href="/projects/">All projects <ArrowIcon /></a>
     </div>
     <ul class="cards">{projects.map((p) => <ProjectCard project={p} />)}</ul>
   </section>
