@@ -228,6 +228,9 @@ h3 { font-size: 1rem; line-height: 1.4; letter-spacing: -0.01em; }
 .prose header .lede { margin-top: 1rem; }
 .about-head { display: flex; align-items: center; gap: 1.5rem; }
 .about-head .lede { margin-top: 0.5rem; }
+.prose .pubs { list-style: none; padding: 0; }
+.prose .pubs li { margin-bottom: 1rem; }
+.pub-venue { display: block; margin-top: 0.2rem; font-family: var(--rd-mono); font-size: 0.8125rem; color: var(--rd-faint); }
 .prose .avatar, .avatar { width: 96px; height: 96px; border-radius: 999px; object-fit: cover; flex-shrink: 0; box-shadow: var(--rd-ring), var(--rd-shadow-1); }
 @media (max-width: 24rem) { .about-head { gap: 1rem; } .prose .avatar { width: 72px; height: 72px; } }
 .prose header .meta { font-family: var(--rd-mono); color: var(--rd-faint); font-size: 0.8125rem; margin: 1.25rem 0 0.75rem; }
