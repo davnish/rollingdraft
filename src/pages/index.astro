@@ -24,11 +24,11 @@ const liveHost = latestLive?.data.url ? new URL(latestLive.data.url).host : unde
         <ArrowIcon />
       </a>
     )}
-    <h1>Drafts from my logs.</h1>
+    <h1>Drafts from my running logs.</h1>
     <p class="lede">
-      Hi, welcome. These are my sidequests in ML, geospatial, infrastructure and AI. I build,
-      learn and try to write down what I find.
+      Hi, welcome to my quests. I build, deploy and try to write down what I learn along the way.
     </p>
+    <p class="hero-note">Some of my projects are live. Click "See the projects" to check them out.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="/sidequests/">See the projects</a>
       <a class="btn btn-secondary" href="/blog/">Read the blog</a>
@@ -37,7 +37,7 @@ const liveHost = latestLive?.data.url ? new URL(latestLive.data.url).host : unde
 
   <section class="section wrap-wide">
     <div class="section-head">
-      <h2>Sidequests</h2>
+      <h2>Projects</h2>
       <a class="arrow-link" href="/sidequests/">All projects <ArrowIcon /></a>
     </div>
     <ul class="cards">{projects.map((p) => <ProjectCard project={p} />)}</ul>
